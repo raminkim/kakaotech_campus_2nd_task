@@ -17,11 +17,11 @@
 
 ## ERD
 
-<img src="https://content.pstmn.io/9ee49852-f7db-4570-8df3-6016450c6215/aW1hZ2UucG5n" alt="" height="289" width="450">
+<img src="https://content.pstmn.io/f5a6ab4a-ed04-4ed7-a501-45d305c4456d/aW1hZ2UucG5n" alt="" height="298" width="560">
 
 #### 일정 테이블
 
-1. **scheduleId - int:** 일정의 고유 id 값
+1. **scheduleId - bigint:** 일정의 고유 id 값
     
 2. **writerName - varchar(255)**: 일정 작성자의 이름 (=작성자명)
     
