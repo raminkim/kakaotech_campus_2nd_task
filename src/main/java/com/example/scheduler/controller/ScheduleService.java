@@ -1,14 +1,14 @@
 package com.example.scheduler.controller;
 
-import com.example.scheduler.ScheduleRequestDto;
-import com.example.scheduler.ScheduleResponseDto;
+import com.example.scheduler.dto.ScheduleRequestDto;
+import com.example.scheduler.dto.ScheduleResponseDto;
 
 import java.util.List;
 
 public interface ScheduleService {
     public ScheduleResponseDto saveSchedule(ScheduleRequestDto requestDto);
 
-    List<ScheduleResponseDto> findAll();
+    List<ScheduleResponseDto> findAll(Long writerId);
 
     ScheduleResponseDto findScheduleById(Long scheduleId);
 

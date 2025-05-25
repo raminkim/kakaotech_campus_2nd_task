@@ -1,9 +1,7 @@
-package com.example.scheduler;
+package com.example.scheduler.dto;
 
 import com.example.scheduler.entity.Schedule;
 import lombok.Getter;
-
-import java.util.Date;
 
 @Getter
 public class ScheduleResponseDto {
@@ -12,13 +10,15 @@ public class ScheduleResponseDto {
     private String workToDo;
     private String createdAt;
     private String updatedAt;
+    private Long writerId;
 
-    public ScheduleResponseDto(Long scheduleId, String writerName, String workToDo, String createdAt, String updatedAt) {
+    public ScheduleResponseDto(Long scheduleId, String writerName, String workToDo, String createdAt, String updatedAt, Long writerId) {
         this.scheduleId = scheduleId;
         this.writerName = writerName;
         this.workToDo = workToDo;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.writerId = writerId;
     }
 
     public ScheduleResponseDto(Schedule schedule) {
@@ -27,5 +27,6 @@ public class ScheduleResponseDto {
         this.workToDo = schedule.getWorkToDo();
         this.createdAt = schedule.getCreatedAt();
         this.updatedAt = schedule.getUpdatedAt();
+        this.writerId = schedule.getWriterId();
     }
 }

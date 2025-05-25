@@ -1,16 +1,12 @@
 package com.example.scheduler.controller;
 
-import com.example.scheduler.ScheduleRequestDto;
-import com.example.scheduler.ScheduleResponseDto;
-import com.example.scheduler.entity.Schedule;
-import org.apache.coyote.Response;
+import com.example.scheduler.dto.ScheduleRequestDto;
+import com.example.scheduler.dto.ScheduleResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/schedule")
@@ -23,19 +19,20 @@ public class ScheduleController {
     }
 
     @PostMapping
-    public ScheduleResponseDto createSchedule(@RequestBody ScheduleRequestDto requestDto) {
+    public ResponseEntity<ScheduleResponseDto> createSchedule(@RequestBody ScheduleRequestDto requestDto) {
 
-        return scheduleService.saveSchedule(requestDto);
+        return new ResponseEntity<>(scheduleService.saveSchedule(requestDto), HttpStatus.CREATED);
     }
 
-    @GetMapping
-    public List<ScheduleResponseDto> findAll() {
-        return scheduleService.findAll();
+    // 도전 기능 3에 의한 작성자의 고유 식별자를 통해 일정이 검색이 될 수 있도록 추가한 전체 일정 조회 코드
+    @GetMapping("/writerId/{writerId}")
+    public ResponseEntity<List<ScheduleResponseDto>> findAll(@PathVariable Long writerId) {
+        return new ResponseEntity<>(scheduleService.findAll(writerId), HttpStatus.OK);
     }
 
     @GetMapping("/{scheduleId}")
-    public ScheduleResponseDto findScheduleById(@PathVariable Long scheduleId) {
-        return scheduleService.findScheduleById(scheduleId);
+    public ResponseEntity<ScheduleResponseDto> findScheduleById(@PathVariable Long scheduleId) {
+        return new ResponseEntity<>(scheduleService.findScheduleById(scheduleId), HttpStatus.OK);
     }
 
     @PatchMapping("/{scheduleId}")

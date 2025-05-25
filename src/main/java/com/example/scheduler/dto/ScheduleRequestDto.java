@@ -1,4 +1,4 @@
-package com.example.scheduler;
+package com.example.scheduler.dto;
 
 import lombok.Getter;
 
@@ -12,4 +12,5 @@ public class ScheduleRequestDto {
     private String password;
     private Date createdAt;
     private Date updatedAt;
+    private Long writerId; // 레벨 3에 의한 writerId 추가
 }

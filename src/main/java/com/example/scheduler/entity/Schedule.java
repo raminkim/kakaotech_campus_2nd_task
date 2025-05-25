@@ -15,19 +15,13 @@ public class Schedule {
     private String password; // 비밀번호
     private String createdAt; // 작성일
     private String updatedAt; // 수정일
+    private Long writerId; // 작성자 id (FK)
 
-    public Schedule(String writerName, String workToDo, String password) {
+    public Schedule(String writerName, String workToDo, String password, Long writerId) {
         this.writerName = writerName;
         this.workToDo = workToDo;
         this.password = password;
-    }
-
-    public Schedule(Long scheduleId, String writerName, String workToDo, String createdAt, String updatedAt) {
-        this.scheduleId = scheduleId;
-        this.writerName = writerName;
-        this.workToDo = workToDo;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.writerId = writerId;
     }
 
     public void updateSchedule(String writerName, String workToDo, String password) {
